@@ -4,5 +4,6 @@
         <page name='DSA-Ch1-UniqueStrings'/>
         <page name='DSA-Ch2-IsPalindrome'/>
         <page name='DSA-Ch3-SameCharacters'/>
+        <page name='DSA-Ch4-CustomContains-Fuzzy'/>
     </pages>
 </playground>
