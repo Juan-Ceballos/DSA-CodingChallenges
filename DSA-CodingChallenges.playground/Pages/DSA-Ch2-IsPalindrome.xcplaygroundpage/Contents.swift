@@ -10,3 +10,5 @@ func isPalindrome(input: String) -> Bool {
 
 isPalindrome(input: "hello")
 isPalindrome(input: "rotator")
+
+// mb try w/out using .reversed()

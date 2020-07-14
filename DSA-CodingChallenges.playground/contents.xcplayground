@@ -3,5 +3,6 @@
     <pages>
         <page name='DSA-Ch1-UniqueStrings'/>
         <page name='DSA-Ch2-IsPalindrome'/>
+        <page name='DSA-Ch3-SameCharacters'/>
     </pages>
 </playground>
