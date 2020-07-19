@@ -5,5 +5,11 @@
         <page name='DSA-Ch2-IsPalindrome'/>
         <page name='DSA-Ch3-SameCharacters'/>
         <page name='DSA-Ch4-CustomContains-Fuzzy'/>
+        <page name='DSA-Ch5-CountTheChars'/>
+        <page name='DSA-Ch6-RemoveDups'/>
+        <page name='DSA-Ch7-RemoveExtraSpaces'/>
+        <page name='DSA-Ch8-RotatedString'/>
+        <page name='DSA-Ch9-Pangrams'/>
+        <page name='DSA-Ch10-VandC'/>
     </pages>
 </playground>
