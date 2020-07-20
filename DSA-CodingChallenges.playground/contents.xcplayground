@@ -11,5 +11,6 @@
         <page name='DSA-Ch8-RotatedString'/>
         <page name='DSA-Ch9-Pangrams'/>
         <page name='DSA-Ch10-VandC'/>
+        <page name='DSA-Ch11-DiffLetters'/>
     </pages>
 </playground>
