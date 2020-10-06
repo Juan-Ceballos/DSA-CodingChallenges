@@ -13,5 +13,6 @@
         <page name='DSA-Ch10-VandC'/>
         <page name='DSA-Ch11-DiffLetters'/>
         <page name='DSA-Ch12-LongestPrefix'/>
+        <page name='DSA-StringSplosion'/>
     </pages>
 </playground>
