@@ -14,5 +14,7 @@
         <page name='DSA-Ch11-DiffLetters'/>
         <page name='DSA-Ch12-LongestPrefix'/>
         <page name='DSA-StringSplosion'/>
+        <page name='DSA-Ch13-RunLength'/>
+        <page name='DSA-Ch16-FizzBuzz'/>
     </pages>
 </playground>
