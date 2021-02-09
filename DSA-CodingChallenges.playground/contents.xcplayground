@@ -16,5 +16,6 @@
         <page name='DSA-StringSplosion'/>
         <page name='DSA-Ch13-RunLength'/>
         <page name='DSA-Ch16-FizzBuzz'/>
+        <page name='DSA-Ch38-FindNSmallest'/>
     </pages>
 </playground>
