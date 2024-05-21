@@ -84,4 +84,59 @@ var sampleArr2 = [5, 3, 2, 7, 1]
 quickSort2(arr: &sampleArr2, low: 0, high: sampleArr2.count - 1)
 print(sampleArr2)
 
+//-----------------------------------------------------------------------------
 
+var sampleArr3 = [5, 3, 2, 7, 1]
+
+func partition3(arr: inout [Int], low: Int, high: Int) -> Int {
+    var i = low
+    var pivot = high
+    
+    for j in low..<high {
+        let pivotVal = arr[pivot]
+        let currVal = arr[j]
+        let compareVal = arr[i]
+        
+        // find every value lower than pivot to place before i
+        if  currVal <= pivotVal {
+            arr.swapAt(i, j)
+            i += 1
+        }
+    }
+    
+    arr.swapAt(i, pivot)
+    return i
+}
+
+func quickSort3(arr: inout [Int], low: Int, high: Int) {
+    
+    if low < high {
+        let pivot = partition3(arr: &arr, low: low, high: high)
+        // keep doing partition on both sides
+        // pivot - 1, pivot + 1, pivot is sorted and place do
+        // find middle for the 2 halves
+        quickSort3(arr: &arr, low: low, high: pivot - 1)
+        quickSort3(arr: &arr, low: pivot + 1, high: high)
+    }
+}
+
+func quickSort3a(arr: inout [Int], low: Int, high: Int) {
+    
+    if low < high {
+        let pivot = partition3(arr: &arr, low: low, high: high)
+        // keep doing partition on both sides
+        // pivot - 1, pivot + 1, pivot is sorted and place do
+        // find middle for the 2 halves
+        let left = arr[low..<pivot]
+        let right = arr[(pivot + 1)...]
+        //quickSort3a(arr: &<#T##[Int]#>, low: <#T##Int#>, high: <#T##Int#>)
+        
+        // sorting whole array in palce
+        
+        quickSort3(arr: &arr, low: low, high: pivot - 1)
+        quickSort3(arr: &arr, low: pivot + 1, high: high)
+    }
+}
+
+quickSort3(arr: &sampleArr3, low: 0, high: sampleArr3.count - 1)
+print(sampleArr3)
