@@ -50,8 +50,8 @@ var sampleArr = [5, 3, 2, 7, 1]
 
 //print(partitionVal)
 
-quickSort(arr: &sampleArr, low: 0, high: sampleArr.count - 1)
-print(sampleArr)
+//quickSort(arr: &sampleArr, low: 0, high: sampleArr.count - 1)
+//print(sampleArr)
 
 //-----------------------------------------------------------------------------
 
@@ -81,8 +81,8 @@ func quickSort2(arr: inout [Int], low: Int, high: Int) {
 }
 
 var sampleArr2 = [5, 3, 2, 7, 1]
-quickSort2(arr: &sampleArr2, low: 0, high: sampleArr2.count - 1)
-print(sampleArr2)
+//quickSort2(arr: &sampleArr2, low: 0, high: sampleArr2.count - 1)
+//print(sampleArr2)
 
 //-----------------------------------------------------------------------------
 
@@ -138,5 +138,70 @@ func quickSort3a(arr: inout [Int], low: Int, high: Int) {
     }
 }
 
-quickSort3(arr: &sampleArr3, low: 0, high: sampleArr3.count - 1)
-print(sampleArr3)
+//quickSort3(arr: &sampleArr3, low: 0, high: sampleArr3.count - 1)
+// print(sampleArr3)
+
+//-----------------------------------------------------------------------------
+
+// 4
+
+func partition4(arr: inout [Int], low: Int, high: Int) -> Int {
+    var i = low
+    let pivot = high
+    
+    for j in low..<high {
+        let pivotVal = arr[pivot]
+        let currVal = arr[j]
+        
+        if pivotVal >= currVal {
+            arr.swapAt(i, j)
+            i += 1
+        }
+    }
+    
+    arr.swapAt(i, pivot)
+    return i
+}
+
+func quicksort4(arr: inout [Int], low: Int, high: Int) {
+    print()
+}
+
+//-----------------------------------------------------------------------------
+
+// 5
+
+var sampleArr5 = [5, 3, 2, 7, 1]
+
+func partition5(arr: inout [Int], low: Int, high: Int) -> Int {
+    
+    var i = low
+    var pivot = high
+    
+    for j in low..<high {
+        let pivotVal = arr[pivot]
+        let currVal = arr[j]
+        
+        if pivotVal >= currVal {
+            arr.swapAt(i, j)
+            i += 1
+        }
+    }
+    
+    arr.swapAt(i, pivot)
+    return i
+}
+
+func quickSort5(arr: inout [Int], low: Int, high: Int) {
+    
+    if low < high {
+        let pivot = partition5(arr: &arr, low: low, high: high)
+        quickSort5(arr: &arr, low: low, high: pivot - 1)
+        quickSort5(arr: &arr, low: pivot + 1, high: high)
+    }
+    
+}
+
+quickSort5(arr: &sampleArr5, low: 0, high: sampleArr5.count - 1)
+print("sample arr 5")
+print(sampleArr5)
