@@ -202,6 +202,88 @@ func quickSort5(arr: inout [Int], low: Int, high: Int) {
     
 }
 
-quickSort5(arr: &sampleArr5, low: 0, high: sampleArr5.count - 1)
-print("sample arr 5")
-print(sampleArr5)
+//quickSort5(arr: &sampleArr5, low: 0, high: sampleArr5.count - 1)
+//print("sample arr 5")
+//print(sampleArr5)
+
+//-----------------------------------------------------------------------------
+
+// 6
+
+var sampleArr6 = [5, 3, 2, 7, 1]
+
+
+func partition6(arr: inout [Int], low: Int, high: Int) -> Int {
+    
+    var i = low
+    
+    for j in low..<high {
+        let currVal = arr[j]
+        let pivotVal = arr[high]
+        
+        if currVal <= pivotVal {
+            arr.swapAt(i, j)
+            i += 1
+        }
+    }
+    
+    arr.swapAt(i, high)
+    return i
+}
+
+func quickSort6(arr: inout [Int], low: Int, high: Int) {
+    
+    if low < high {
+        let pivot = partition5(arr: &arr, low: low, high: high)
+        quickSort5(arr: &arr, low: low, high: pivot - 1)
+        quickSort5(arr: &arr, low: pivot + 1, high: high)
+    }
+    
+}
+
+//quickSort6(arr: &sampleArr6, low: 0, high: sampleArr6.count - 1)
+//print("sample arr 6")
+//print(sampleArr6)
+
+
+//-----------------------------------------------------------------------------
+
+var sampleArr7 = [5, 3, 2, 7, 1]
+
+func partition7(arr: inout [Int],  low: Int, high: Int) -> Int {
+    
+    let pivot = high
+    var i = low
+    
+    for j in low..<high {
+        let pivotVal = arr[pivot]
+        let currVal = arr[j]
+        
+        if currVal <= pivotVal {
+            arr.swapAt(i, j)
+            i += 1
+        }
+    }
+    
+    arr.swapAt(i, pivot)
+    return i
+}
+
+func quickSort7(arr: inout [Int], low: Int, high: Int) {
+    
+    // recursion
+    
+    // recursion has  conditional base case stopping point
+    if low < high {
+        // needs this also to recursively know the two halves, before and after mid index and break down to sort
+        let pivot = partition7(arr: &arr, low: low, high: high)
+        
+        quickSort7(arr: &arr, low: low, high: pivot - 1)
+        quickSort7(arr: &arr, low: pivot + 1, high: high)
+    }
+    
+}
+
+print("hello")
+quickSort7(arr: &sampleArr7, low: 0, high: sampleArr7.count - 1)
+print(sampleArr7)
