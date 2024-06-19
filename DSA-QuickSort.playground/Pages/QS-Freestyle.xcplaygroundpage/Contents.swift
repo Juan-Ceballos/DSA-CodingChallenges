@@ -287,3 +287,35 @@ func quickSort7(arr: inout [Int], low: Int, high: Int) {
 print("hello")
 quickSort7(arr: &sampleArr7, low: 0, high: sampleArr7.count - 1)
 print(sampleArr7)
+
+
+var sampleArr8 = [5, 3, 2, 7, 1]
+
+func partition8(arr: inout [Int], low: Int, high: Int) -> Int {
+    var i = low
+    let pivotVal = arr[high]
+    
+    for j in low..<high {
+        let currVal = arr[j]
+        if currVal <= pivotVal {
+            arr.swapAt(i, j)
+            i += 1
+        }
+    }
+    
+    arr.swapAt(i, high)
+    return i
+}
+
+func quickSort8(arr: inout [Int], low: Int, high: Int) {
+    
+    if low < high {
+        let pivot = partition8(arr: &arr, low: low, high: high)
+        quickSort8(arr: &arr, low: low, high: pivot - 1)
+        quickSort8(arr: &arr, low: pivot + 1, high: high)
+    }
+}
+
+quickSort8(arr: &sampleArr8, low: 0, high: sampleArr8.count - 1)
+print("8")
+print(sampleArr8)
