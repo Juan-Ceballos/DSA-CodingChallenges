@@ -1,24 +1,24 @@
-func merge(left: [Int], right: [Int]) -> [Int] {
-  let leftSize = left.count - 1
-  let rightSize = right.count - 1
-  var i = 0
-  var j = 0
+func merge(leftArr: [Int], rightArr: [Int]) -> [Int] {
+  let leftSize = leftArr.count
+  let rightSize = rightArr.count
+  var leftIndex = 0
+  var rightIndex = 0
   var result: [Int] = []
-  while i <= leftSize && j <= rightSize {
-    if left[i] <= right[j] {
-      result.append(left[i])
-      i += 1
+  while leftIndex < leftSize && rightIndex < rightSize {
+    if leftArr[leftIndex] <= rightArr[rightIndex] {
+      result.append(leftArr[leftIndex])
+      leftIndex += 1
     }
     else {
-      result.append(right[j])
-      j += 1
+      result.append(rightArr[rightIndex])
+      rightIndex += 1
     }
   }
-  if i <= leftSize {
-    result.append(contentsOf: left[i...])
+  if leftIndex <= leftSize {
+    result.append(contentsOf: leftArr[leftIndex...])
   }
-  if j <= rightSize {
-    result.append(contentsOf: right[j...])
+  if rightIndex <= rightSize {
+    result.append(contentsOf: rightArr[rightIndex...])
   }
   return result
 }
@@ -31,7 +31,7 @@ func mergeSort(arr: [Int]) -> [Int] {
     let rightArr = Array(arr[mid..<arr.count])
     let leftSort = mergeSort(arr: leftArr)
     let rightSort = mergeSort(arr: rightArr)
-    return merge(left: leftSort, right: rightSort)
+    return merge(leftArr: leftSort, rightArr: rightSort)
 }
 print("1")
 let sampleArr = [4, 8, 2, 5, 1]
