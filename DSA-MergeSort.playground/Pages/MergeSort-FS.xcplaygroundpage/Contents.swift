@@ -1,44 +1,40 @@
-
-
-
-func mergeSort() {
-    
+func merge(left: [Int], right: [Int]) -> [Int] {
+  let leftSize = left.count - 1
+  let rightSize = right.count - 1
+  var i = 0
+  var j = 0
+  var result: [Int] = []
+  while i <= leftSize && j <= rightSize {
+    if left[i] <= right[j] {
+      result.append(left[i])
+      i += 1
+    }
+    else {
+      result.append(right[j])
+      j += 1
+    }
+  }
+  if i <= leftSize {
+    result.append(contentsOf: left[i...])
+  }
+  if j <= rightSize {
+    result.append(contentsOf: right[j...])
+  }
+  return result
 }
+func mergeSort(arr: [Int]) -> [Int] {
+  if arr.count <= 1 {
+    return arr
+  }
+    let mid = arr.count / 2
+    let leftArr = Array(arr[0..<mid])
+    let rightArr = Array(arr[mid..<arr.count])
+    let leftSort = mergeSort(arr: leftArr)
+    let rightSort = mergeSort(arr: rightArr)
+    return merge(left: leftSort, right: rightSort)
+}
+print("1")
+let sampleArr = [4, 8, 2, 5, 1]
+let resultArr = mergeSort(arr: sampleArr)
+print(resultArr)
 
-/*
- Combine two sorted list
-    i
- A) 2, 8, 15, 18
-    j
- B) 5, 9, 12, 17
-    k
- C) 2, 5, 8,
- 
- Compare two sorted arrays increment pointer add to list c
- 
- Algo:
- merge(A, B, m, n)
- i = 1, j = 1, k = 1
- 
- while i <= m && j <= n {
- if (A[i] < B[j])
- C[k++] = A[i++];
- else
- c[k++] = B[j++]
- }
- 
- for (; i <= m; i ++)
-  c[k++] = B[j++]
- 
- for (; j<= n; j++)
-   c[k++] = B[j];
- 
- Iterative - 2 way merge sort
- - Assume in one unsorted array ar n list based on size in which each list is already sorted
- - sort pairs accross to create less sorted list about half(1st Pass)
- - Have to store in third array
- - Continue with 2 way merge sort(2nd Pass)
- - Final list after 3rd pass with ie was looking at
- n / 2 / 2 / 2, 8 = 2 ^ 3, log2,8 = 3 = nlogn
- Recursive - Merge Sort
- */

@@ -14,6 +14,8 @@ func recurrence1(n: Int) {
 }
 print("1:")
 recurrence1(n: 5)
+print("end\n")
+
 
 //
 // do something 5 times like a for loop
@@ -31,7 +33,7 @@ func recurrence2(n: Int) {
 
 print("2:")
 recurrence2(n: 5)
-print("end")
+print("end\n")
 
 //
 
@@ -48,18 +50,26 @@ var sum3 = 0
 let result3 = recurrence3(n: 5, sum: sum3)
 print("3:")
 print(result3)
+print("end\n")
 
 
-func recurrence4(n: Int, sum: Int) -> Int {
-    
-    if n > 0 {
-        return recurrence4(n: n - 1, sum: sum + n)
+func recurrence4(n: Int) -> Int {
+    // stop case
+    if n <= 0 {
+        return 0
     }
-    
-    return sum
+    // recursive case/call
+    return n + recurrence4(n: n - 1)
 }
 
-var sum4 = 0
-let result4 = recurrence3(n: 5, sum: sum4)
+let result4 = recurrence4(n: 5)
 print("4:")
 print(result4)
+print("end\n")
+
+/*
+ 5 + r(n -1)
+     4 + r(n -1)
+         3 + r(n - 1) = 0
+              
+ */
