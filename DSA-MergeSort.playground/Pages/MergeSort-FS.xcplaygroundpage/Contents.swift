@@ -37,4 +37,37 @@ print("1")
 let sampleArr = [4, 8, 2, 5, 1]
 let resultArr = mergeSort(arr: sampleArr)
 print(resultArr)
+print("end")
+// 2
 
+func merge2(leftArr: [Int], rightArr: [Int]) -> [Int] {
+    var leftIndex = 0
+    var rightIndex = 0
+    var leftSize = leftArr.count
+    var rightSize = rightArr.count
+    var sortedArr = [Int]()
+    
+    while leftIndex < leftSize && rightIndex < rightSize {
+        if leftArr[leftIndex] <= rightArr[rightIndex] {
+            sortedArr.append(leftArr[leftIndex])
+            leftIndex += 1
+        } else {
+            sortedArr.append(rightArr[rightIndex])
+            rightIndex += 1
+        }
+    }
+    
+    if leftIndex <= leftSize {
+        sortedArr.append(contentsOf: leftArr[leftIndex...])
+    }
+    
+    if rightIndex <= rightSize {
+        sortedArr.append(contentsOf: rightArr[rightIndex...])
+    }
+    
+    return sortedArr
+}
+
+func mergeSort2(arr: [Int]) {
+    
+}
