@@ -319,3 +319,31 @@ func quickSort8(arr: inout [Int], low: Int, high: Int) {
 quickSort8(arr: &sampleArr8, low: 0, high: sampleArr8.count - 1)
 print("8")
 print(sampleArr8)
+
+
+func partition9(arr: inout [Int], low: Int, high: Int) -> Int {
+    
+    var i = low
+    let pivotVal = arr[high]
+    
+    for j in low..<high {
+        let currVal = arr[j]
+        if currVal <= pivotVal {
+            arr.swapAt(i, j)
+            i += 1
+        }
+    }
+    
+    arr.swapAt(i, high)
+    return i
+}
+
+func quickSort9(arr: inout [Int], low: Int, high: Int) {
+    
+    if low < high {
+        let pivot = partition9(arr: &arr, low: low, high: high)
+        quickSort9(arr: &arr, low: low, high: pivot - 1)
+        quickSort9(arr: &arr, low: pivot + 1, high: high)
+    }
+    
+}
