@@ -77,5 +77,5 @@ func mergeSort2(arr: [Int]) -> [Int] {
     let mid = arr.count / 2
     let leftArr = mergeSort2(arr: Array(arr[0..<mid]))
     let rightArr = mergeSort2(arr: Array(arr[mid..<arr.count]))
-    return merge2(leftArr: leftArr, rightArr: rightArr)    
+    return merge2(leftArr: leftArr, rightArr: rightArr)
 }
