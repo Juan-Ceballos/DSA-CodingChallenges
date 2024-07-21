@@ -797,3 +797,65 @@ func divisorSubstrings(_ num: Int, _ k: Int) -> Int {
 }
 print("problem 7")
 print(divisorSubstrings(2005, 3))
+
+func countGoodSubstrings(_ s: String) -> Int {
+    // number if strings size 3 with no repeating in string input, same substring if occurs again counts
+    /*
+     sliding window of 3 check substring using set, adjust count
+     */
+    var leftPointer = 0
+    var count = 0
+    var currStr = ""
+    let sArr = Array(s)
+    for rightPointer in 0..<sArr.count {
+        currStr.append(sArr[rightPointer])
+        if rightPointer - leftPointer + 1 == 3 {
+            if currStr.count == Set(currStr).count {
+                count += 1
+            }
+            leftPointer += 1
+            var currStrArr = Array(currStr)
+            currStrArr.removeFirst()
+            currStr = String(currStrArr)
+        }
+    }
+    return count
+}
+
+print("problem 8")
+print(countGoodSubstrings("aababcabc"))
+
+func maximumSubarraySum(_ nums: [Int], _ k: Int) -> Int {
+    /*
+     find specific sub out of all subs that meets largest condition
+     window has to be k size so can continue adding until k
+     all elements distinct in sub
+     return count for number of max sum with distinct
+     */
+    var leftPointer = 0
+    var largestSum = 0
+    var currSum = 0
+    var currArr: [Int] = []
+    var freqDict: [Int: Int] = [:]
+    for rightPointer in 0..<nums.count {
+        let curr = nums[rightPointer]
+        currSum += curr
+        freqDict[curr, default: 0] += 1
+        currArr.append(nums[rightPointer])
+        if rightPointer - leftPointer + 1 == k {
+            if freqDict.count == k {
+                if largestSum < currSum {
+                    largestSum = currSum
+                }
+            }
+            currSum -= currArr[0]
+            freqDict[currArr[0]]! -= 1
+            if freqDict[currArr[0]] == 0 {
+                freqDict.removeValue(forKey: currArr[0])
+            }
+            currArr.removeFirst()
+            leftPointer += 1
+        }
+    }
+    return largestSum
+}
