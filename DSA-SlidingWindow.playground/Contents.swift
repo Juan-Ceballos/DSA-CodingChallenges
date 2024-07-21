@@ -748,3 +748,52 @@ func minimumDifference(_ nums: [Int], _ k: Int) -> Int {
 }
 print("problem 6")
 print(minimumDifference([1, 9, 4, 7], 3))
+
+func divisorSubstrings(_ num: Int, _ k: Int) -> Int {
+    // the number of contiguous substring that is a divisor of num
+    // substring of size k
+    /*
+     Determine divisor
+     int division remainder == 0
+     move window up to size k
+     remove left as right increments at size
+     Algo:
+     leftPointer variable set to 0
+     divisor count variable set to 0
+     string version of num variable
+     var to track substring for checking set empty
+     iterate through string num variable using rightPointer
+     add char to curr substring
+     check if right - left + 1 == k
+     if so see if substring to int is divisor of num (num % subNum == 0)
+     if so count += 1
+     remove leftPointer
+     return count
+     */
+    var leftPointer = 0
+    var count = 0
+    var currStr = ""
+    let arrNum = Array(String(num))
+    print(arrNum)
+    for rightPointer in 0..<arrNum.count {
+        currStr.append(arrNum[rightPointer])
+        if rightPointer - leftPointer + 1 == k {
+            let currNum = Int(currStr)!
+            if currNum > 0 {
+                if num % currNum == 0 {
+                    count += 1
+                }
+            }
+            leftPointer += 1
+            if currStr.count == 1 {currStr = ""} else {
+                var arrCurrStr = Array(currStr)
+                arrCurrStr.removeFirst()
+                currStr = String(arrCurrStr)
+            }
+        }
+    }
+    print(Int("005"))
+    return count
+}
+print("problem 7")
+print(divisorSubstrings(2005, 3))
