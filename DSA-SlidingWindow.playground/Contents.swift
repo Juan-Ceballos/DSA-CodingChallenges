@@ -859,3 +859,62 @@ func maximumSubarraySum(_ nums: [Int], _ k: Int) -> Int {
     }
     return largestSum
 }
+
+
+func findAnagrams(_ s: String, _ p: String) -> [Int] {
+    /*
+     check s for anagrams of string p, specifically where in the string it starts so track index
+     */
+    let pTemp = p.sorted {$0 < $1}
+    var leftPointer = 0
+    var res: [Int] = []
+    var currDict = [Character: Int]()
+    var sArr = Array(s)
+    var freqDict = [Character: Int]()
+    for char in p {
+        freqDict[char, default: 0] += 1
+    }
+    print(freqDict)
+    /*
+     check anagram
+     Char: bool
+     a, b, c
+     */
+    let dict1 = ["a": 1, "b": 2]
+    let dict2 = ["b": 2, "a": 1]
+    print(dict1 == dict2)
+    for rightPointer in 0..<sArr.count {
+        let rE = sArr[rightPointer]
+        currDict[rE, default: 0] += 1
+        if rightPointer - leftPointer + 1 == p.count {
+            if currDict == freqDict {
+                res.append(leftPointer)
+            }
+            currDict[sArr[leftPointer]]! -= 1
+            if currDict[sArr[leftPointer]]! == 0 {
+                currDict.removeValue(forKey: sArr[leftPointer])
+            }
+            leftPointer += 1
+        }
+    }
+    return res
+}
+
+
+func containsNearbyDuplicate(_ nums: [Int], _ k: Int) -> Bool {
+    var leftPointer = 0
+    var freqDict = [Int: Int]()
+    for rightPointer in 0..<nums.count {
+        let rE = nums[rightPointer]
+        freqDict[rE, default: 0] += 1
+        if rightPointer - leftPointer <= k {
+        } else {
+            freqDict[nums[leftPointer]]! -= 1
+            leftPointer += 1
+        }
+        if freqDict[rE]! > 1 {return true}
+    }
+    return false
+}
+
+
